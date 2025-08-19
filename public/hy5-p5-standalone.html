@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HY5 + p5 Standalone</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js"></script>
+</head>
+<body>
+<script>
+// --- Begin ExampleSketch.js code (instance mode, but global for classic p5) ---
+let random1, random2, random3;
+let movingObjs;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(0);
+  frameRate(20);
+  rectMode(CENTER);
+  textAlign(CENTER, CENTER);
+  random1 = random(width/3);
+  random2 = random(width/3);
+  random3 = random(width/3);
+
+  // HY5/hydra setup
+  H.pixelDensity(0.3);
+  s0.initP5();
+  P5.toggle(0);
+  src(s0)
+    .add(src(o0).scale(0.91), .9)
+    .modulateScale(noize(1), 0.1)
+    .out();
+}
+
+function draw() {
+  clear();
+  blendMode(DIFFERENCE);
+  background(0, 200);
+  textSize(height/10);
+  noStroke();
+
+  let b = (sin(frameCount * 0.01) * 0.5 + 0.5) * 150;
+  fill(b, 0, 190-b, 150);
+
+  // Mouse Circles
+  circle(mouseX, mouseY, height/5);
+  circle(width-mouseX, height-mouseY, height/3);
+
+  // Middle Circle
+  let rSize = (sin(frameCount * 0.0025) * 0.5 + 0.5) * 330;
+  fill(100,0,b, 100);
+  noStroke();
+  circle(width/2, height/2, height/2 + rSize);
+
+  // Moving texts
+  let tx;
+  fill(255, 200);
+  tx = constrain(noise(100 + frameCount * 0.0006) * width, 0, width);
+
+  // Create moving objects if not already created
+  if (!movingObjs) {
+    movingObjs = [
+      new MovingObject(100, 200, 100, 'design'),
+      new MovingObject(300, 400, 100, 'photos'),
+      new MovingObject(500, 600, 100, 'p5')
+    ];
+  }
+
+  // Update and display each moving object
+  for (let obj of movingObjs) {
+    obj.update();
+    obj.display();
+  }
+}
+
+class MovingObject {
+  constructor(xNoiseSeed, yNoiseSeed, size, label) {
+    this.xNoiseSeed = xNoiseSeed;
+    this.yNoiseSeed = yNoiseSeed;
+    this.size = size;
+    this.label = label;
+    this.x = 0;
+    this.y = 0;
+  }
+  update() {
+    this.x = constrain(noise(this.xNoiseSeed + frameCount * 0.006) * width, 0, width);
+    this.y = constrain(noise(this.yNoiseSeed + frameCount * 0.0065) * height, 0, height);
+  }
+  display() {
+    noStroke();
+    textSize(this.size/1.5);
+    let tw = textWidth(this.label);
+    let th = this.size;
+    rectMode(CENTER);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text(this.label, this.x, this.y);
+  }
+}
+// --- End ExampleSketch.js code ---
+</script>
+</body>
+</html>
