@@ -10,7 +10,7 @@ edited by Suyash Chitrakar
 let libs = ['https://unpkg.com/hydra-synth', 'includes/libs/hydra-synth.js', 'https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js', 'includes/libs/hy5.js']
 
 // sandbox - start
-H.pixelDensity(0.5) // 2x = retina, set <= 1 if laggy
+H.pixelDensity(0.4) // 2x = retina, set <= 1 if laggy
 
 let random1, random2, random3;
 
@@ -32,7 +32,7 @@ function preload() {
 
 src(s0)
 .add(src(o0).scale(0.6), 0.4) // controls the "glow"
-.modulateScale(noize(0.9), 0.9, 1.9 , 0.1) // 1, 0.1, (0.05), 0.08, 1 and 1 is sick 
+.modulateScale(noize(0.9), 1, 0.9) // 1, 0.1, (0.05), 0.08, 1 and 1 is sick 
 .out()
 // sandbox - end
 
@@ -40,7 +40,6 @@ src(s0)
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
-    frameRate(7);
     noCursor();
 
     rectMode(CENTER);
@@ -66,28 +65,24 @@ function mouseWheel(event) {
 }
 
 function draw() {
-    
     frameRate(14);
     opacity = o1; // reset opacity
-    value = 255;
+    value = 100;
     blendMode(BLEND);
     
     if(!mouseIsPressed){
-        // blendMode(DIFFERENCE);
         value = 0;
         opacity = 0;
-        // frameCount *= 10;
-        // frameRate(0.5);
         blendMode(HARD_LIGHT);
         clear();
     }
 	//blendMode(SUBTRACT); // set blend mode to DIFFERENCE
-    //background(0); // set background color with transparency
+    background(0,1); // set background color with transparency
 
     // Colors 
     let b = (sin(frameCount * 0.001) * 0.5 + 0.5) * 100 + randShade;
     let g = (sin(frameCount * 0.003) * 0.5 + 0.5) * 10 + random(randShade);
-    fill(b, g, 10*b, 70); 
+    fill(b, g, 10*b, 10); 
     // Size
 	textSize(windowHeight/15);
     noStroke();
