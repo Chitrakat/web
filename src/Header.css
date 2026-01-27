@@ -104,7 +104,14 @@
 }
 
 .dropdown-item:hover {
-  background: #000000;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+.dropdown-item.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
 }
 
 @media (max-width: 600px) {

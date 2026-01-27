@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Header.css';
 
-function Header() {
+function Header({ onNavigate, currentView }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -27,11 +27,11 @@ function Header() {
             Menu &#x25BC;
           </button>
           <div className="dropdown-menu">
-            <a href="#" className="dropdown-item" onClick={closeDropdown}>Option 1</a>
-            <a href="#" className="dropdown-item" onClick={closeDropdown}>Option 2</a>
-            <a href="#" className="dropdown-item" onClick={closeDropdown}>Option 3</a>
-            <a href="#" className="dropdown-item" onClick={closeDropdown}>Option 4</a>
-            <a href="#" className="dropdown-item" onClick={closeDropdown}>Option 5</a>
+            <a href="#" className={`dropdown-item ${currentView === 'home' ? 'active' : ''}`} onClick={() => { onNavigate('home'); closeDropdown(); }}>Home</a>
+            <a href="#" className={`dropdown-item ${currentView === 'generator' ? 'active' : ''}`} onClick={() => { onNavigate('generator'); closeDropdown(); }}>Generate Workout</a>
+            {currentView === 'workout' && (
+              <a href="#" className="dropdown-item active" onClick={closeDropdown}>Active Workout</a>
+            )}
           </div>
         </div>
       </div>

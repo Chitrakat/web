@@ -1,0 +1,275 @@
+.workout-generator {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.generator-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.generator-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+}
+
+.input-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 2rem;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.time-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.time-option {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.time-option:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.time-option.selected {
+  background: #4CAF50;
+  border-color: #4CAF50;
+  transform: scale(1.05);
+}
+
+.difficulty-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.difficulty-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.difficulty-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.difficulty-option.selected {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4CAF50;
+}
+
+.difficulty-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.difficulty-description {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.generate-button {
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.generate-button:hover {
+  background: linear-gradient(135deg, #45a049, #4CAF50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.workout-preview {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.workout-preview h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4CAF50;
+}
+
+.workout-summary {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.summary-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.zones-list {
+  margin-bottom: 2rem;
+}
+
+.zone-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.zone-card:hover {
+  transform: translateX(4px);
+}
+
+.zone-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.zone-number {
+  background: #4CAF50;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.zone-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.zone-duration {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.zone-intensity {
+  color: #cccccc;
+  font-size: 0.95rem;
+  margin-left: 46px; /* Align with zone name */
+}
+
+.start-workout-button {
+  width: 100%;
+  background: linear-gradient(135deg, #FF5722, #FF7043);
+  color: white;
+  border: none;
+  padding: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+}
+
+.start-workout-button:hover {
+  background: linear-gradient(135deg, #E64A19, #FF5722);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .workout-generator {
+    padding: 1rem;
+  }
+
+  .generator-container h1 {
+    font-size: 2rem;
+  }
+
+  .time-options {
+    gap: 0.5rem;
+  }
+
+  .workout-summary {
+    gap: 1rem;
+  }
+
+  .zone-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .zone-intensity {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
