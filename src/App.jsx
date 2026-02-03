@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from './Header';
 import { WorkoutProvider } from './context/WorkoutContext';
 import HomePage from './components/HomePage';
 import WorkoutGenerator from './components/WorkoutGenerator';
@@ -27,7 +26,6 @@ function App() {
   return (
     <WorkoutProvider>
       <div className="app">
-        <Header onNavigate={handleNavigate} currentView={currentView} />
         <main className="main-content">
           {renderCurrentView()}
         </main>

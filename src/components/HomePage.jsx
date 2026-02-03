@@ -37,10 +37,6 @@ function HomePage({ onNavigate }) {
             <h3>🎯 Zone Training</h3>
             <p>Structured zones: Warm-up, Steady, Push, Recovery</p>
           </div>
-          <div className="feature-card">
-            <h3>📊 Live Tracking</h3>
-            <p>Real-time zone display and heart rate monitoring</p>
-          </div>
         </div>
       </div>
     </div>

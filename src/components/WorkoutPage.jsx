@@ -20,44 +20,8 @@ function WorkoutPage({ onNavigate }) {
   } = useWorkout();
   
   const [showOptionsOverlay, setShowOptionsOverlay] = useState(false);
-  const [heartRate, setHeartRate] = useState(0);
 
-  // Mock heart rate generator
-  useEffect(() => {
-    const generateHeartRate = () => {
-      if (!isActive || isPaused) {
-        setHeartRate(Math.floor(Math.random() * 15) + 60); // Resting HR: 60-75
-        return;
-      }
 
-      const currentZone = getCurrentZone();
-      if (!currentZone) return;
-
-      let baseHR = 120;
-      
-      // Adjust based on zone type
-      if (currentZone.name.includes('Warm-up') || currentZone.name.includes('Cool-down')) {
-        baseHR = 100;
-      } else if (currentZone.name.includes('Recovery')) {
-        baseHR = 110;
-      } else if (currentZone.name.includes('Steady')) {
-        baseHR = 140;
-      } else if (currentZone.name.includes('Build')) {
-        baseHR = 150;
-      } else if (currentZone.name.includes('Push')) {
-        baseHR = 170;
-      }
-
-      // Add some randomness
-      const variation = Math.floor(Math.random() * 20) - 10;
-      setHeartRate(Math.max(60, baseHR + variation));
-    };
-
-    const interval = setInterval(generateHeartRate, 2000);
-    generateHeartRate(); // Initial call
-    
-    return () => clearInterval(interval);
-  }, [isActive, isPaused, getCurrentZone]);
 
   // Timer effect
   useEffect(() => {
@@ -160,10 +124,6 @@ function WorkoutPage({ onNavigate }) {
         </div>
 
         <div className="stats-section">
-          <div className="stat-item">
-            <div className="stat-value">{heartRate}</div>
-            <div className="stat-label">BPM</div>
-          </div>
           <div className="stat-item">
             <div className="stat-value">{formatTime(totalTimeRemaining)}</div>
             <div className="stat-label">Total Remaining</div>
